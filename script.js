@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", function(){
     stworz.addEventListener("click", nowaGra);
     rank = document.createElement('div');
     plansza = document.createElement('div');
-    
-    
+    rank.id = "rank";
+    main.appendChild(rank);
+    ranking();
     
 });
 function ruch(event)
