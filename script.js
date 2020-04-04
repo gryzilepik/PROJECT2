@@ -120,7 +120,6 @@ function nowaGra()
     animacja =setInterval(kierunki, 150 / szybkosc.value);
     animacja2 = setInterval(kolizja, 150 / szybkosc.value);
     animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
-    animacja4 = setInterval(sprawdz, 150 / szybkosc.value);
     rank.id = "rank";    
     plansza.id="plansza";
 	plansza.style.width=wielkosc.value +"px";
@@ -193,6 +192,7 @@ function randomJablko()
     y = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetTop+3;
 	//x =parseInt(Math.random()*plansza.offsetWidth/grubosc.value)*grubosc.value+plansza.offsetLeft+plansza.offsetParent.offsetLeft+1;
     x = parseInt(Math.random()*wielkosc.value/grubosc.value)*grubosc.value + plansza.offsetLeft+3;
+    sprawdz();
 	jablko = document.createElement('div');
 	jablko.id = "jablko";
 	jablko.style.top = y + "px";
