@@ -1,6 +1,6 @@
 let kierunekX = 0;
 let kierunekY = 0;
-let robak, animacja, animacja2, animacja3, strona, x, y, jablko, el, koniec, b;
+let robak, animacja, animacja2, animacja3, strona, x, y, jablko, el, koniec, b, czy_wonsz = false, czy_ogon = false, czy_moze_zmienic_kierunek = true;
 let wynik = 0;
 
 document.addEventListener("DOMContentLoaded", function(){ 
@@ -16,33 +16,34 @@ document.addEventListener("DOMContentLoaded", function(){
 function ruch(event)
 {    
     var klawisz = event.key; 
-    if (klawisz == 'ArrowLeft' && strona != "PRAWO")
+    if (klawisz == 'ArrowLeft' && strona != "PRAWO" && czy_moze_zmienic_kierunek == true)
     {
         strona = "LEWO";
         kierunekX = (-1) * grubosc.value;
         kierunekY = 0;
+        czy_moze_zmienic_kierunek = false;
         
     }
-    else if (klawisz == 'ArrowDown' && strona != "GORA")
+    else if (klawisz == 'ArrowDown' && strona != "GORA" && czy_moze_zmienic_kierunek == true)
     {
         strona = "DOL";
         kierunekY = 1 * grubosc.value;  
         kierunekX = 0; 
-               
+        czy_moze_zmienic_kierunek = false;       
     }
-    else if (klawisz == 'ArrowRight' && strona != "LEWO")
+    else if (klawisz == 'ArrowRight' && strona != "LEWO" && czy_moze_zmienic_kierunek == true)
     {
         strona = "PRAWO";
         kierunekX = 1 * grubosc.value; 
         kierunekY = 0;
-        
+        czy_moze_zmienic_kierunek = false;
     }
-    else if (klawisz == 'ArrowUp' && strona != "DOL")
+    else if (klawisz == 'ArrowUp' && strona != "DOL" && czy_moze_zmienic_kierunek == true)
     {
         strona = "GORA"; 
         kierunekY = (-1) * grubosc.value;  
         kierunekX = 0; 
-              
+        czy_moze_zmienic_kierunek = false;      
     }
     
 }
@@ -58,7 +59,8 @@ function nowy_ogon()
 			el[i].style.left =el[i-1].style.left;
 		}
 		el[0].style.top =robak.style.top;
-		el[0].style.left =robak.style.left;		
+		el[0].style.left =robak.style.left;
+        czy_ogon = true;
 	}
 }
 
@@ -69,6 +71,7 @@ function kierunki()
     let left = robak.offsetLeft;  
     robak.style.top = top+kierunekY+"px";
     robak.style.left = left+kierunekX+"px";
+    czy_moze_zmienic_kierunek = true;
 }  
 
 function dobazy()
@@ -130,6 +133,7 @@ function nowaGra()
 	robak.style.width=grubosc.value +"px";
 	robak.style.height=grubosc.value +"px";
     plansza.appendChild(robak);
+    czy_wonsz = true;
     document.addEventListener('keydown', ruch);      
     robak = document.getElementById("wonsz");
     plansza = document.getElementById("plansza");
@@ -211,23 +215,27 @@ function randomJablko()
 		
 }
 
-/*
+let animacja4 = setInterval(sprawdz, 150 / szybkosc.value);
 function sprawdz()
 {
-	if(el.length>0)
+	if(czy_wonsz = true)
 	{
-		for (let i = 0; i<el.length; i++)
-		{
-			if(el[i].style.top = y && el[i].style.left = x)
-			{
-				randomJablko();
-			}
-		}
+        if(czy_ogon =  true)
+        {    
+            for (let i = 0; i<el.length; i++)
+            {
+                if(el[i].style.top = y && el[i].style.left = x)
+                {
+                    randomJablko();
+                }
+            }
+        }
+        else
+            if(robak.style.top = y && robak.style.left = x)
+                randomJablko();
 	}
-	else
-		randomJablko();
 }
-*/
+
 
 function jedzenie() 
 {

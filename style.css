@@ -37,6 +37,8 @@ html, body{
     background-image: url("jablko2.png");
     margin: 0;
     position: absolute;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .ogon{
