@@ -60,7 +60,7 @@ function nowy_ogon()
 		}
 		el[0].style.top =robak.style.top;
 		el[0].style.left =robak.style.left;
-        czy_ogon = true;
+        
 	}
 }
 
@@ -218,20 +218,20 @@ function randomJablko()
 
 function sprawdz()
 {
-	if(czy_wonsz = true)
+	if(czy_wonsz == true)
 	{
-        if(czy_ogon =  true)
+        if(czy_ogon ==  true)
         {    
             for (let i = 0; i<el.length; i++)
             {
-                if(el[i].style.top == y && el[i].style.left == x)
+                if(parseFloat(el[i].style.top) == y && parseFloat(el[i].style.left) == x)
                 {
                     randomJablko();
                 }
             }
         }
         else
-            if(robak.style.top == y && robak.style.left == x)
+            if(parseFloat(robak.style.top) == y && parseFloat(robak.style.left) == x)
                 randomJablko();
 	}
 }
@@ -252,6 +252,7 @@ function jedzenie()
 		ogon.style.top = robak.style.top;
 		ogon.style.left = robak.style.left;
 		plansza.appendChild(ogon);
+        czy_ogon = true;
         randomJablko();	
 	}
 }
