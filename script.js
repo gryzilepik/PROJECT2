@@ -1,6 +1,6 @@
 let kierunekX = 0;
 let kierunekY = 0;
-let robak, animacja, animacja2, animacja3, strona, x, y, jablko, el, koniec, b, czy_wonsz = false, czy_ogon = false, czy_moze_zmienic_kierunek = true;
+let robak, animacja, animacja2, animacja3, animacja4, strona, x, y, jablko, el, koniec, b, czy_wonsz = false, czy_ogon = false, czy_moze_zmienic_kierunek = true;
 let wynik = 0;
 
 document.addEventListener("DOMContentLoaded", function(){ 
@@ -119,7 +119,8 @@ function nowaGra()
 	clearInterval(animacja3);
     animacja =setInterval(kierunki, 150 / szybkosc.value);
     animacja2 = setInterval(kolizja, 150 / szybkosc.value);
-    animacja3 = setInterval(jedzenie, 150 / szybkosc.value);   
+    animacja3 = setInterval(jedzenie, 150 / szybkosc.value);
+    animacja4 = setInterval(sprawdz, 150 / szybkosc.value);
     rank.id = "rank";    
     plansza.id="plansza";
 	plansza.style.width=wielkosc.value +"px";
@@ -215,7 +216,6 @@ function randomJablko()
 		
 }
 
-let animacja4 = setInterval(sprawdz, 150 / szybkosc.value);
 function sprawdz()
 {
 	if(czy_wonsz = true)
@@ -224,14 +224,14 @@ function sprawdz()
         {    
             for (let i = 0; i<el.length; i++)
             {
-                if(el[i].style.top = y && el[i].style.left = x)
+                if(el[i].style.top == y && el[i].style.left == x)
                 {
                     randomJablko();
                 }
             }
         }
         else
-            if(robak.style.top = y && robak.style.left = x)
+            if(robak.style.top == y && robak.style.left == x)
                 randomJablko();
 	}
 }
